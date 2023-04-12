@@ -1,7 +1,8 @@
-body{
- padding-bottom: 100%;
-}
-
-.fondo{
+.fondo-imagen{
   background: url('/assets/imagenes/cielo.jpg');
 }
+
+.texto{
+  font-weight: bold;
+}
+
