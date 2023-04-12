@@ -12,11 +12,17 @@ export class AppComponent implements OnInit{
   tiempo:number = 0;
   maxAves:number = 9;
   anteriorAzar: number = 0;
-  finalizoJuego:Boolean = false;
+  tamanioPuntaje: number = 0;
+  finalizoJuego:Boolean = true;
+
 
   constructor() { }
 
   ngOnInit(): void {
+    this.fnCrearAves();
+  }
+
+  fnJugar(){
     this.fnInicializar();
     this.iniciarTemporizador();
   }
@@ -47,6 +53,16 @@ export class AppComponent implements OnInit{
         break;
       }
     }
+
+    this.fnValidarAumentoPuntaje();
+  }
+
+  fnValidarAumentoPuntaje(){
+    const suma = this.puntajeAzul + this.puntajeRosa;
+
+    if(suma % 10 == 0 && suma > 0){
+      this.tamanioPuntaje++;
+    }
   }
 
   fnLimpiarAves(){
@@ -59,20 +75,32 @@ export class AppComponent implements OnInit{
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  fnCapturarAve(item: Ave): any{
+    if(!this.finalizoJuego){
+      if(item.numero! % 2  == 0){
+        this.puntajeRosa++;
+      }else{
+        this.puntajeAzul++;
+      }
+    }
+  }
+
   fnInicializar(){
     this.puntajeRosa = 0;
     this.puntajeAzul = 0;
     this.tiempo = 60;
-    this.finalizoJuego = true;
+    this.finalizoJuego = false;
     this.anteriorAzar = 0;
+    this.tamanioPuntaje = 16;
     this.fnCrearAves();
   }
 
   fnDisminuirTiempo(){
     this.tiempo--;
 
-    if(this.tiempo < 0){
-      this.finalizoJuego = false;
+    if(this.tiempo <= 0){
+
+      this.finalizoJuego = true;
     }
   }
 

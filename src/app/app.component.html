@@ -2,10 +2,13 @@
 <div class="container d-flex flex-column" >
   <div class="row vh-100">
     <div class="col-sm-10 col-md-6 col-lg-6 mx-auto d-table h-100">
+
       <div class="d-table-cell align-middle">
+          <button class="btn btn-primary" (click)="fnJugar()" *ngIf="finalizoJuego && tiempo == 0">INICIAR JUEGO</button>
           <div class="card ">
             <div class="card-body fondo-imagen">
-              <div class="row text-center">
+
+              <div class="row text-center" [ngStyle]="{'font-size': tamanioPuntaje +'px'}">
                 <div class="col-sm-6">
                   <label class="texto">Aves Rosas</label>
                   <p class="texto">{{puntajeRosa}}</p>
@@ -16,8 +19,8 @@
                 </div>
               </div>
               <div class="row text-center">
-                <div class="col-sm-12">
-                  <label class="texto">Tiempo restante</label>
+                <div class="col-sm-12"  [ngClass]="{'alerta-finalizar': tiempo <=10}">
+                  <label class="texto">Tiempo restante:</label>
                   <p class="texto">{{tiempo}}</p>
                 </div>
               </div>
@@ -25,7 +28,7 @@
                 <div class="col-sm-4" *ngFor="let item of aves;">
                   <div>
                     <img src="/assets/imagenes/casaPajaros.png" style="width: 100%;" >
-                    <img *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 100%;" class="adelante-imagen">
+                    <img (click)="fnCapturarAve(item)" *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 100%;" class="adelante-imagen">
                   </div>
                  </div>
               </div>
