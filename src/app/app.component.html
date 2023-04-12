@@ -22,9 +22,12 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-4" *ngFor="let item of cantCasas;">
-                  <img src="/assets/imagenes/casaPajaros.png" style="width: 100%;">
-                </div>
+                <div class="col-sm-4" *ngFor="let item of aves;">
+                  <div>
+                    <img src="/assets/imagenes/casaPajaros.png" style="width: 100%;" >
+                    <img *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 100%;" class="adelante-imagen">
+                  </div>
+                 </div>
               </div>
             </div>
           </div>
