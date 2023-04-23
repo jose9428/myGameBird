@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
   aumento: number = 0;
   tiempoAnterior: number = 0;
   audioJuego = new Audio();
-  audioInicio = null;
 
   constructor() { }
 
