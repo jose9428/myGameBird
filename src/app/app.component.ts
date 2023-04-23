@@ -14,7 +14,11 @@ export class AppComponent implements OnInit{
   anteriorAzar: number = 0;
   tamanioPuntaje: number = 0;
   finalizoJuego:Boolean = true;
-
+  sumaBase: number = 0;
+  aumento: number = 0;
+  tiempoAnterior: number = 0;
+  audioJuego = new Audio();
+  audioInicio = null;
 
   constructor() { }
 
@@ -58,10 +62,14 @@ export class AppComponent implements OnInit{
   }
 
   fnValidarAumentoPuntaje(){
-    const suma = this.puntajeAzul + this.puntajeRosa;
+    const sumaTotal = this.puntajeAzul + this.puntajeRosa;
 
-    if(suma % 10 == 0 && suma > 0){
+    this.sumaBase = sumaTotal - (this.aumento * 10);
+
+    if(this.sumaBase == 10){
       this.tamanioPuntaje++;
+      this.sumaBase = 0;
+      this.aumento++;
     }
   }
 
@@ -76,12 +84,13 @@ export class AppComponent implements OnInit{
   }
 
   fnCapturarAve(item: Ave): any{
-    if(!this.finalizoJuego){
-      if(item.numero! % 2  == 0){
+    if(!this.finalizoJuego && this.tiempoAnterior != this.tiempo){
+      if(item.numero! % 2  == 0 ){
         this.puntajeRosa++;
       }else{
         this.puntajeAzul++;
       }
+      this.tiempoAnterior = this.tiempo;
     }
   }
 
@@ -93,13 +102,13 @@ export class AppComponent implements OnInit{
     this.anteriorAzar = 0;
     this.tamanioPuntaje = 16;
     this.fnCrearAves();
+    this.fnReproducir();
   }
 
   fnDisminuirTiempo(){
     this.tiempo--;
 
     if(this.tiempo <= 0){
-
       this.finalizoJuego = true;
     }
   }
@@ -110,9 +119,23 @@ export class AppComponent implements OnInit{
         clearInterval(t);
       }else{
         this.fnDisminuirTiempo();
+      }
+    },1000)
+
+    let t2 = window.setInterval(() => {
+      if(this.tiempo <= 0){
+        clearInterval(t2);
+      }else{
         this.fnLimpiarAves();
         this.fnGenerarAve();
       }
-    },1000)
+    },700)
+  }
+
+  fnReproducir() {
+    this.audioJuego.pause();
+    this.audioJuego = new Audio('assets/audios/principal.mp3');
+    this.audioJuego.volume = 0.2;
+    this.audioJuego.play();
   }
 }

@@ -15,3 +15,22 @@
 .alerta-finalizar{
   color: red;
 }
+
+
+.phone {
+
+  border: 7px solid black;
+  border-radius: 40px;
+ /*  height: 600px; */
+  /* width: 300px; */
+  background: #ccefff;
+  /* ccefff */
+  box-shadow: 0 19px 38px rgb(0, 0, 0, 0.30),
+      0 15px 12px rgb(0, 0, 0, 0.22);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.cursor{
+  cursor: pointer;
+}

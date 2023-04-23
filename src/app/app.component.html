@@ -4,14 +4,16 @@
     <div class="col-sm-10 col-md-6 col-lg-6 mx-auto d-table h-100">
 
       <div class="d-table-cell align-middle">
-          <button class="btn btn-primary" (click)="fnJugar()" *ngIf="finalizoJuego && tiempo == 0">INICIAR JUEGO</button>
-          <div class="card ">
+          <div class="text-center">
+            <button class="btn btn-dark" (click)="fnJugar()" *ngIf="finalizoJuego && tiempo == 0">INICIAR JUEGO</button>
+          </div>
+          <div class="card phone mt-1">
             <div class="card-body fondo-imagen">
 
-              <div class="row text-center" [ngStyle]="{'font-size': tamanioPuntaje +'px'}">
+              <div class="row text-center " [ngStyle]="{'font-size': tamanioPuntaje +'px'}">
                 <div class="col-sm-6">
-                  <label class="texto">Aves Rosas</label>
-                  <p class="texto">{{puntajeRosa}}</p>
+                  <label class="texto ">Aves Rosas</label>
+                  <p class="texto ">{{puntajeRosa}}</p>
                 </div>
                 <div class="col-sm-6">
                   <label class="texto">Aves Azules</label>
@@ -25,10 +27,10 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-4" *ngFor="let item of aves;">
-                  <div>
-                    <img src="/assets/imagenes/casaPajaros.png" style="width: 100%;" >
-                    <img (click)="fnCapturarAve(item)" *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 100%;" class="adelante-imagen">
+                <div class="col-sm-4 col-md-4 col-4" *ngFor="let item of aves;">
+                  <div class="text-center">
+                    <img src="/assets/imagenes/casaPajaros.png" style="width: 80%;" >
+                    <img (click)="fnCapturarAve(item)" *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 80%;" class="adelante-imagen cursor">
                   </div>
                  </div>
               </div>
