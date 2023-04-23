@@ -11,11 +11,11 @@
             <div class="card-body fondo-imagen">
 
               <div class="row text-center " [ngStyle]="{'font-size': tamanioPuntaje +'px'}">
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-md-6 col-6">
                   <label class="texto ">Aves Rosas</label>
                   <p class="texto ">{{puntajeRosa}}</p>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-md-6 col-6">
                   <label class="texto">Aves Azules</label>
                   <p class="texto">{{puntajeAzul}}</p>
                 </div>
@@ -29,8 +29,8 @@
               <div class="row">
                 <div class="col-sm-4 col-md-4 col-4" *ngFor="let item of aves;">
                   <div class="text-center">
-                    <img src="/assets/imagenes/casaPajaros.png" style="width: 80%;" >
-                    <img (click)="fnCapturarAve(item)" *ngIf="item.visibilidad" src="/assets/imagenes/{{item.imagen}}" style="width: 80%;" class="adelante-imagen cursor">
+                    <img src="assets/imagenes/casaPajaros.png" style="width: 80%;" >
+                    <img (click)="fnCapturarAve(item)" *ngIf="item.visibilidad" src="assets/imagenes/{{item.imagen}}" style="width: 80%;" class="adelante-imagen cursor">
                   </div>
                  </div>
               </div>
